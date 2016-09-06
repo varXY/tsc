@@ -16,7 +16,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        
+        let loginVC = LoginViewController()
+        window?.rootViewController = NavigationController(rootViewController: loginVC)
+        window?.makeKeyAndVisible()
+        
+        
+        let tabBarVC = UITabBarController()
+        let mainVC = MainViewController()
+        mainVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "home_qian"), selectedImage: nil)
+        
+        let discoverVC = DiscoverViewController()
+        discoverVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "find_qian"), selectedImage: nil)
+
+        let cartVC = CartViewController()
+        cartVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "shop"), selectedImage: nil)
+
+        let userVC = UserViewController()
+        userVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "man"), selectedImage: nil)
+
+        
+        tabBarVC.viewControllers = [mainVC, discoverVC, cartVC, userVC]
+        tabBarVC.selectedIndex = 0
+        
+        
         return true
     }
 
